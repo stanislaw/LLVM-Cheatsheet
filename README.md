@@ -110,3 +110,13 @@ $ nm Distribution/iOS/MusicXML.framework/MusicXML
 ...
 ```
 
+## Known issues
+
+### Attempt to read debug information from a bitcode file compiled with Apple clang
+
+```
+warning: ignoring debug info with an invalid version (700000003) in /Users/stanislaw/Projects/LLVM/BuildXcode/projects/mull-project/unittests/Debug/fixtures/fixture_google_test_tester.bc
+warning: ignoring debug info with an invalid version (700000003) in /Users/stanislaw/Projects/LLVM/BuildXcode/projects/mull-project/unittests/Debug/fixtures/fixture_google_test_testee.bc
+```
+
+Solution: compile files with custom clang e.g. `brew install llvm / /usr/local/opt/llvm/bin/clang`.
