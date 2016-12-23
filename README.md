@@ -17,6 +17,8 @@
   - [Display the shared libraries that object file uses](#display-the-shared-libraries-that-object-file-uses)
 - [Etc](#etc)
   - [Display symbol table of an object file](#display-symbol-table-of-an-object-file)
+- [Known issues](#known-issues)
+  - [Attempt to read debug information from a bitcode file compiled with Apple clang](#attempt-to-read-debug-information-from-a-bitcode-file-compiled-with-apple-clang)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
