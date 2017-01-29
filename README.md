@@ -112,6 +112,14 @@ $ nm Distribution/iOS/MusicXML.framework/MusicXML
 ...
 ```
 
+to also demangle C++ symbols:
+
+```
+$ nm target/debug/example | c++filt -p -i | grep main_static
+000000010000faa0 T test::test_main_static::h8310fdcbefe718c6
+0000000100086810 short test::test_main_static::_$u7b$$u7b$closure$u7d$$u7d$::_FILE_LINE::h76297330bb651452
+```
+
 ## Known issues
 
 ### Attempt to read debug information from a bitcode file compiled with Apple clang
