@@ -41,7 +41,7 @@ clang -c -emit-llvm -o testee.bc testee.c
 ## lli
 
 ```bash
-brew install llvm # installed to /usr/local/opt/llvm
+brew install llvm # installed to /usr/local/opt/llvm, /usr/local/opt/llvm/bin/lli
 ```
 
 ### Execute Objective-C code compiled into LLVM Bitcode using LLVM JIT
@@ -100,8 +100,14 @@ Distribution/iOS/MusicXML.framework/MusicXML:
 
 ### Display symbol table of an object file
 
+Use `llvm-nm` instead of `nm` as the former can also read the .bc files.
+
 ```bash
-$ nm Distribution/iOS/MusicXML.framework/MusicXML 
+brew install llvm # installed to /usr/local/opt/llvm, /usr/local/opt/llvm/bin/llvm-nm
+```
+
+```bash
+$ llvm-nm Distribution/iOS/MusicXML.framework/MusicXML 
 0000000000000ec4 t +[MXMLConverter ConventionalParts]
 0000000000008514 t +[RXMLElement elementFromHTMLData:]
 00000000000083cd t +[RXMLElement elementFromHTMLFile:]
