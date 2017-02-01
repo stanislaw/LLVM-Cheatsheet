@@ -136,3 +136,16 @@ warning: ignoring debug info with an invalid version (700000003) in /Users/stani
 ```
 
 Solution: compile files with custom clang e.g. `brew install llvm / /usr/local/opt/llvm/bin/clang`.
+
+### Attempt to read a bitcode file with possibly incompatible version of LLVM IR
+
+```
+test: <string>:7237:187: error: invalid field 'variable'
+!1526 = distinct !DIGlobalVariable(name: "test_info_", linkageName: "_ZN14Hello_sup_Test10test_info_E", scope: !0, file: !1527, line: 4, type: !1528, isLocal: false, isDefinition: true, variable: %"class.testing::TestInfo"** @_ZN14Hello_sup_Test10test_info_E, declaration: !2817)
+```
+
+Best solution: make sure to compile the IR with the same `llvm` that reads it. The safest way is to stick to stable branches of `llvm` like `release_40`.
+
+See also: [IR Backwards Compatibility](http://llvm.org/docs/DeveloperPolicy.html#ir-backwards-compatibility).
+
+
