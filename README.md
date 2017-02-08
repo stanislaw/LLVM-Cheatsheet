@@ -38,6 +38,14 @@ clang -S -emit-llvm testee.c -o testee.ll
 clang -c -emit-llvm -o testee.bc testee.c
 ```
 
+### One-line compilation 
+
+Useful for quick probes (like testing for missing header paths).
+
+```
+echo '#include <math.h>' | clang-3.7 -xc -v -
+```
+
 ## lli
 
 ```bash
