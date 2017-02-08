@@ -7,8 +7,11 @@
 - [Clang](#clang)
   - [Generate human-readable LLVM IR from a file.](#generate-human-readable-llvm-ir-from-a-file)
   - [Generate LLVM Bitcode from a file.](#generate-llvm-bitcode-from-a-file)
+  - [One-line compilation](#one-line-compilation)
 - [lli](#lli)
   - [Execute Objective-C code compiled into LLVM Bitcode using LLVM JIT](#execute-objective-c-code-compiled-into-llvm-bitcode-using-llvm-jit)
+- [CMake](#cmake)
+  - [Known issues: custom toolchains](#known-issues-custom-toolchains)
 - [Ninja](#ninja)
   - [Get compilation_database.json](#get-compilation_databasejson)
   - [Get list of commands required to build a target](#get-list-of-commands-required-to-build-a-target)
@@ -19,6 +22,7 @@
   - [Display symbol table of an object file](#display-symbol-table-of-an-object-file)
 - [Known issues](#known-issues)
   - [Attempt to read debug information from a bitcode file compiled with Apple clang](#attempt-to-read-debug-information-from-a-bitcode-file-compiled-with-apple-clang)
+  - [Attempt to read a bitcode file with possibly incompatible version of LLVM IR](#attempt-to-read-a-bitcode-file-with-possibly-incompatible-version-of-llvm-ir)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -57,6 +61,14 @@ brew install llvm # installed to /usr/local/opt/llvm, /usr/local/opt/llvm/bin/ll
 ```bash
 /usr/local/opt/llvm/bin/lli -load=/System/Library/Frameworks/Foundation.framework/Versions/Current/Foundation jitobjc.bc
 ```
+
+## CMake
+
+### Known issues: custom toolchains
+
+- It seems that CMake doesn't allow setting custom C and CXX compilers 
+when it builds for Xcode (`cmake ... -G Xcode`). It does allow setting
+them for Ninja.
 
 ## Ninja
 
