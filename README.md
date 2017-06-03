@@ -15,10 +15,10 @@
 - [Ninja](#ninja)
   - [Get compilation_database.json](#get-compilation_databasejson)
   - [Get list of commands required to build a target](#get-list-of-commands-required-to-build-a-target)
-- [dyld](#dyld)
+- [Objects and Symbols](#objects-and-symbols)
   - [Display libraries that are loaded by dyld](#display-libraries-that-are-loaded-by-dyld)
   - [Display the shared libraries that object file uses](#display-the-shared-libraries-that-object-file-uses)
-- [Etc](#etc)
+  - [Display the @rpaths of an object](#display-the-rpaths-of-an-object)
   - [Display symbol table of an object file](#display-symbol-table-of-an-object-file)
 - [Known issues](#known-issues)
   - [Attempt to read debug information from a bitcode file compiled with Apple clang](#attempt-to-read-debug-information-from-a-bitcode-file-compiled-with-apple-clang)
@@ -42,7 +42,7 @@ clang -S -emit-llvm testee.c -o testee.ll
 clang -c -emit-llvm -o testee.bc testee.c
 ```
 
-### One-line compilation 
+### One-line compilation
 
 Useful for quick probes (like testing for missing header paths).
 
@@ -66,7 +66,7 @@ brew install llvm # installed to /usr/local/opt/llvm, /usr/local/opt/llvm/bin/ll
 
 ### Known issues: custom toolchains
 
-- It seems that CMake doesn't allow setting custom C and CXX compilers 
+- It seems that CMake doesn't allow setting custom C and CXX compilers
 when it builds for Xcode (`cmake ... -G Xcode`). It does allow setting
 them for Ninja.
 
@@ -90,7 +90,7 @@ cd LLVM/BuildNinja
 ninja -t commands YourTargetName
 ```
 
-## dyld
+## Objects and Symbols
 
 ### Display libraries that are loaded by dyld
 
@@ -106,7 +106,7 @@ dyld: loaded: /usr/lib/libz.1.dylib
 ### Display the shared libraries that object file uses
 
 ```bash
-otool -L Distribution/iOS/MusicXML.framework/MusicXML 
+otool -L Distribution/iOS/MusicXML.framework/MusicXML
 Distribution/iOS/MusicXML.framework/MusicXML:
 	@rpath/MusicXML.framework/MusicXML (compatibility version 1.0.0, current version 1.0.0)
 	/usr/lib/libxml2.2.dylib (compatibility version 10.0.0, current version 10.9.0)
@@ -116,7 +116,18 @@ Distribution/iOS/MusicXML.framework/MusicXML:
 	/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation (compatibility version 150.0.0, current version 1348.0.0)
 ```
 
-## Etc
+### Display the @rpaths of an object
+
+```
+otool -l
+...
+Load command 20
+          cmd LC_RPATH
+      cmdsize 40
+         path /usr/local/opt/llvm@3.9/lib (offset 12)
+```
+
+Taken from [Print rpath of executable on OSX](https://stackoverflow.com/a/12522096/598057)
 
 ### Display symbol table of an object file
 
@@ -127,7 +138,7 @@ brew install llvm # installed to /usr/local/opt/llvm, /usr/local/opt/llvm/bin/ll
 ```
 
 ```bash
-$ llvm-nm Distribution/iOS/MusicXML.framework/MusicXML 
+$ llvm-nm Distribution/iOS/MusicXML.framework/MusicXML
 0000000000000ec4 t +[MXMLConverter ConventionalParts]
 0000000000008514 t +[RXMLElement elementFromHTMLData:]
 00000000000083cd t +[RXMLElement elementFromHTMLFile:]
