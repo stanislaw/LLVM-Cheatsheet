@@ -20,6 +20,9 @@
   - [Display the shared libraries that object file uses](#display-the-shared-libraries-that-object-file-uses)
   - [Display the @rpaths of an object](#display-the-rpaths-of-an-object)
   - [Display symbol table of an object file](#display-symbol-table-of-an-object-file)
+- [Xcode](#xcode)
+  - [How can I force Xcode to use a custom compiler?](#how-can-i-force-xcode-to-use-a-custom-compiler)
+  - [How can I get all the compile commands from Xcode?](#how-can-i-get-all-the-compile-commands-from-xcode)
 - [Known issues](#known-issues)
   - [Attempt to read debug information from a bitcode file compiled with Apple clang](#attempt-to-read-debug-information-from-a-bitcode-file-compiled-with-apple-clang)
   - [Attempt to read a bitcode file with possibly incompatible version of LLVM IR](#attempt-to-read-a-bitcode-file-with-possibly-incompatible-version-of-llvm-ir)
@@ -127,7 +130,7 @@ Load command 20
          path /usr/local/opt/llvm@3.9/lib (offset 12)
 ```
 
-Taken from [Print rpath of executable on OSX](https://stackoverflow.com/a/12522096/598057)
+Taken from [Print rpath of executable on OSX](https://stackoverflow.com/a/12522096/598057).
 
 ### Display symbol table of an object file
 
@@ -156,6 +159,16 @@ $ nm target/debug/example | c++filt -p -i | grep main_static
 000000010000faa0 T test::test_main_static::h8310fdcbefe718c6
 0000000100086810 short test::test_main_static::_$u7b$$u7b$closure$u7d$$u7d$::_FILE_LINE::h76297330bb651452
 ```
+
+## Xcode
+
+### How can I force Xcode to use a custom compiler?
+
+[How can I force Xcode to use a custom compiler?](https://stackoverflow.com/questions/39327952/how-can-i-force-xcode-to-use-a-custom-compiler)
+
+### How can I get all the compile commands from Xcode?
+
+[How can I get all the compile commands from Xcode?](https://stackoverflow.com/questions/43906786/how-can-i-get-all-the-compile-commands-from-xcode/43973745#43973745)
 
 ## Known issues
 
