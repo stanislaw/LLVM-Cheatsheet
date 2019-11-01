@@ -29,6 +29,22 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Getting help
+
+### Clang
+
+```bash
+clang --help
+clang --help-hidden
+clang -cc1 --help
+```
+
+### Linker
+
+```bash
+clang ... -Wl,--verbose=99
+```
+
 ## Clang
 
 ### Generate human-readable LLVM IR from a file.
