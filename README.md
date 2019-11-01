@@ -4,6 +4,8 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
+- [LLVM](#llvm)
+  - [Reduce time needed for building from source](#reduce-time-needed-for-building-from-source)
 - [Clang](#clang)
   - [Generate human-readable LLVM IR from a file.](#generate-human-readable-llvm-ir-from-a-file)
   - [Generate LLVM Bitcode from a file.](#generate-llvm-bitcode-from-a-file)
@@ -28,6 +30,16 @@
   - [Attempt to read a bitcode file with possibly incompatible version of LLVM IR](#attempt-to-read-a-bitcode-file-with-possibly-incompatible-version-of-llvm-ir)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## LLVM
+
+### Reduce time needed for building from source
+
+```
+cmake .. -DLLVM_TARGETS_TO_BUILD=host
+```
+
+See [How to enable a LLVM backend?](https://stackoverflow.com/a/46912216/598057) for some details.
 
 ## Clang
 
