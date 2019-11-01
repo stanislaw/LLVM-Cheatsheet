@@ -39,6 +39,10 @@
 cmake .. -DLLVM_TARGETS_TO_BUILD=host
 ```
 
+`-DLLVM_TARGETS_TO_BUILD=host` only builds the host target and skips building
+the  default targets, such as AArch64, AMDGPU, ARM, etc. This reduces a build
+time noticeably.
+
 See [How to enable a LLVM backend?](https://stackoverflow.com/a/46912216/598057) for some details.
 
 ## Clang
