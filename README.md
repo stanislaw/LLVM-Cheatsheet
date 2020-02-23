@@ -2,7 +2,6 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [LLVM](#llvm)
   - [Reduce time needed for building from source](#reduce-time-needed-for-building-from-source)
@@ -36,7 +35,7 @@
 ### Reduce time needed for building from source
 
 ```
-cmake .. -DLLVM_TARGETS_TO_BUILD=host
+cmake .. -DCMAKE_BUILD_TYPE=Debug -DLLVM_TARGETS_TO_BUILD=host -DLLVM_ENABLE_ASSERTIONS=ON
 ```
 
 `-DLLVM_TARGETS_TO_BUILD=host` only builds the host target and skips building
